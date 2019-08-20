@@ -2,15 +2,40 @@ Function New-Popup
 {
 
     <#
-  .Synopsis
-  Display a Popup Message
-  .Description
-  This command uses the Wscript.Shell PopUp method to display a graphical message
-  box. You can customize its appearance of icons and buttons. By default the user
-  must click a button to dismiss but you can set a timeout value in seconds to
-  automatically dismiss the popup.
+  .SYNOPSIS
+    Display a Popup Message
+  .DESCRIPTION
+    This command uses the Wscript.Shell PopUp method to display a graphical message
+    box. You can customize its appearance of icons and buttons. By default the user
+    must click a button to dismiss but you can set a timeout value in seconds to
+    automatically dismiss the popup.
 
-  The command will write the return value of the clicked button to the pipeline:
+    The command will write the return value of the clicked button to the pipeline:
+      OK     = 1
+      Cancel = 2
+      Abort  = 3
+      Retry  = 4
+      Ignore = 5
+      Yes    = 6
+      No     = 7
+
+    If no button is clicked, the return value is -1.
+  .EXAMPLE
+    PS C:\> new-popup -message "The update script has completed" -title "Finished" -time 5
+
+    This will display a popup message using the default OK button and default
+    Information icon. The popup will automatically dismiss after 5 seconds.
+  .NOTES
+  Last Updated: April 8, 2013
+  Version     : 1.0
+  .LINK
+    https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
+  .INPUTS
+    None
+  .OUTPUTS
+    integer
+
+    Null   = -1
     OK     = 1
     Cancel = 2
     Abort  = 3
@@ -18,30 +43,6 @@ Function New-Popup
     Ignore = 5
     Yes    = 6
     No     = 7
-
-  If no button is clicked, the return value is -1.
-  .Example
-  PS C:\> new-popup -message "The update script has completed" -title "Finished" -time 5
-
-  This will display a popup message using the default OK button and default
-  Information icon. The popup will automatically dismiss after 5 seconds.
-  .Notes
-  Last Updated: April 8, 2013
-  Version     : 1.0
-
-  .Inputs
-  None
-  .Outputs
-  integer
-
-  Null   = -1
-  OK     = 1
-  Cancel = 2
-  Abort  = 3
-  Retry  = 4
-  Ignore = 5
-  Yes    = 6
-  No     = 7
   #>
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None")]
     Param (

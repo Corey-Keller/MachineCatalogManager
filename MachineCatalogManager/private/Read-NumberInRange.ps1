@@ -25,6 +25,8 @@ function Read-NumberInRange
   .EXAMPLE
     PS C:\> Read-NumberInRange -Min -237 -AllowZero
     Will accept any number from -237 to 32767
+  .LINK
+    https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
   .INPUTS
     None.
   .OUTPUTS

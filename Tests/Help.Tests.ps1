@@ -1,6 +1,6 @@
 $moduleName = $env:BHProjectName
 
-Describe "FullModuleTemplate Help tests for $moduleName" -Tags Build {
+Describe "Help tests for $moduleName" -Tags Build {
 
     BeforeAll {
         Unload-SUT
@@ -17,31 +17,6 @@ Describe "FullModuleTemplate Help tests for $moduleName" -Tags Build {
     {
         Context $node.name {
 
-            it "has a description" {
-                $node.description | Should Not BeNullOrEmpty
-            }
-            it "has an example" {
-                $node.examples | Should Not BeNullOrEmpty
-            }
-            foreach ($parameter in $node.parameters.parameter)
-            {
-                if ($parameter -notmatch 'whatif|confirm')
-                {
-                    it "parameter $($parameter.name) has a description" {
-                        $parameter.Description.text | Should Not BeNullOrEmpty
-                    }
-                }
-            }
-        }
-    }
-}
-
-Describe "AutoDocumentsExample Help tests for $moduleName" -Tags Build {
-    
-    $functions = Get-Command -Module $moduleName -CommandType Function
-    foreach($Function in $Functions){
-        $help = Get-Help $Function.name
-        Context $help.name {
             it "Has a HelpUri" {
                 $Function.HelpUri | Should Not BeNullOrEmpty
             }
@@ -54,11 +29,11 @@ Describe "AutoDocumentsExample Help tests for $moduleName" -Tags Build {
             it "Has an example" {
                  $help.examples | Should Not BeNullOrEmpty
             }
-            foreach($parameter in $help.parameters.parameter)
+            foreach ($parameter in $node.parameters.parameter)
             {
-                if($parameter -notmatch 'whatif|confirm')
+                if ($parameter -notmatch 'whatif|confirm')
                 {
-                    it "Has a Parameter description for '$($parameter.name)'" {
+                    it "parameter $($parameter.name) has a description" {
                         $parameter.Description.text | Should Not BeNullOrEmpty
                     }
                 }

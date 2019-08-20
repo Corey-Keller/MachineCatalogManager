@@ -30,6 +30,8 @@ function Set-ServersInMaintenanceMode
   Will set all servers into Maintenance Mode without prompting the user to double check.
 .INPUTS
   None. You cannot pipe objects to Set-ServersInMaintenanceMode
+.LINK
+  https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
 .OUTPUTS
   None
 #>
