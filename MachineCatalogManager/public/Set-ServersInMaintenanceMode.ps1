@@ -33,7 +33,7 @@ function Set-ServersInMaintenanceMode
 .OUTPUTS
   None
 #>
-[CmdletBinding(DefaultParameterSetName="DefaultParameterSet")]
+[CmdletBinding(DefaultParameterSetName="DefaultParameterSet",SupportsShouldProcess,ConfirmImpact="Low")]
 param (
   [Parameter(Mandatory=$true,Position=0)]
   [Alias("Catalog","MC")]
