@@ -1,7 +1,6 @@
 Function New-Popup
 {
-
-  <#
+    <#
   .SYNOPSIS
     Display a Popup Message
   .DESCRIPTION
@@ -44,7 +43,7 @@ Function New-Popup
     Yes    = 6
     No     = 7
   #>
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None")]
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None", HelpURI = "https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs")]
     Param (
         [Parameter(Position = 0, Mandatory = $True, HelpMessage = "Enter a message for the popup")]
         [ValidateNotNullorEmpty()]

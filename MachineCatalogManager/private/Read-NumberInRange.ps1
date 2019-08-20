@@ -34,6 +34,7 @@ function Read-NumberInRange
   .NOTES
     General notes
   #>
+    [CmdletBinding(HelpURI = "https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs")
     param (
         # Parameter help description
         [Parameter(ParameterSetName = "Range")]
