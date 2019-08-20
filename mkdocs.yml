@@ -1,0 +1,9 @@
+site_name: MachineCatalogManager
+repo_url: https://github.com/Corey-Keller/MachineCatalogManager
+theme: readthedocs
+pages:
+  - Home: index.md
+  - MachineCatalogManager Basics:
+    - What is MachineCatalogManager: about.md
+    - Quick Start: Quick-Start-Installation-and-Example.md
+  - Acknowledgements: acknowledgements.md
