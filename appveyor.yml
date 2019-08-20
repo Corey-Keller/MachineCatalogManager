@@ -9,6 +9,8 @@ clone_folder: C:\MyProjects\MachineCatalogManager
 environment:
   NugetApiKey:
     secure: SDpxSFw0XVd2euHu9IZuYbxz8fXaRf6drEVlDc0u5iGJmonpBbRkIXkeyW3CvyA3
+  access_token:
+    secure: LteZRu3lMw2hw+kzXHqihiuUuyYMBx1SrSI0fv00dsPH0JuGOdRM0f2JP0Tm7Ju9
 
 # Skip on updates to the readme.
 # We can force this by adding [skip ci] or [ci skip] anywhere in commit message 
