@@ -33,7 +33,7 @@ Describe "PSScriptAnalyzer rule-sets" -Tag Build {
 }
 
 
-Describe "General project validation FullModuleTemplate: $moduleName" -Tags Build {
+Describe "General project validation: $moduleName" -Tags Build {
 
     AfterAll {
         Unload-SUT
@@ -41,16 +41,5 @@ Describe "General project validation FullModuleTemplate: $moduleName" -Tags Buil
 
     It "Module '$moduleName' can import cleanly" {
         {Import-Module ($global:SUTPath) -force } | Should Not Throw
-    }
-}
-
-$projectRoot = Resolve-Path "$PSScriptRoot\.."
-$moduleRoot = Split-Path (Resolve-Path "$projectRoot\*\*.psd1")
-$moduleName = Split-Path $moduleRoot -Leaf
-
-Describe "General project validation: $moduleName" -Tags Build, Unit {
-    
-    It "Module '$moduleName' can import cleanly" {
-        { Import-Module (Join-Path $moduleRoot "$moduleName.psm1") -force } | Should Not Throw
     }
 }
