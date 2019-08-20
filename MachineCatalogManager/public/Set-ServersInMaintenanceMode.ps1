@@ -51,7 +51,7 @@ begin {
     add-pssnapin $(Get-PSSnapin -Registered Citrix.Broker.Admin.V? -ErrorAction Stop | Select-Object -last 1 -ExpandProperty Name)
   }
   catch {
-    Write-Host "Could not get the necessary PSSnapin. Are you running from a Delivery Controller (XDC) Server? Exiting..."
+    Write-Output "Could not get the necessary PSSnapin. Are you running from a Delivery Controller (XDC) Server? Exiting..."
     exit 42
   }
 }
