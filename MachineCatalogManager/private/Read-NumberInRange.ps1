@@ -1,6 +1,6 @@
 function Read-NumberInRange
 {
-  <#
+    <#
   .SYNOPSIS
     Will get input from the user and ensure that it is an acceptable numeric value.
   .DESCRIPTION
@@ -25,8 +25,6 @@ function Read-NumberInRange
   .EXAMPLE
     PS C:\> Read-NumberInRange -Min -237 -AllowZero
     Will accept any number from -237 to 32767
-  .LINK
-    https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
   .INPUTS
     None.
   .OUTPUTS
@@ -36,9 +34,9 @@ function Read-NumberInRange
   .LINK
     http://machinecatalogmanager.readthedocs.io/en/latest/functions/Read-NumberInRange.md
   .LINK
-    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/private/Read-NumberInRange.ps1
+    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/Private/Read-NumberInRange.ps1
   #>
-    [CmdletBinding(HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/Read-NumberInRange.md")
+    [CmdletBinding(HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/Read-NumberInRange.md")]
     param (
         # Parameter help description
         [Parameter(ParameterSetName = "Range")]

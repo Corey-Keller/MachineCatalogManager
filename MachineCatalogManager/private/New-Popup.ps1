@@ -27,8 +27,6 @@ Function New-Popup
   .NOTES
   Last Updated: April 8, 2013
   Version     : 1.0
-  .LINK
-    https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
   .INPUTS
     None
   .OUTPUTS
@@ -45,7 +43,7 @@ Function New-Popup
   .LINK
     http://machinecatalogmanager.readthedocs.io/en/latest/functions/New-Popup.md
   .LINK
-    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/private/New-Popup.ps1
+    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/Private/New-Popup.ps1
 
   #>
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None", HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/New-Popup.md")]

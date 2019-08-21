@@ -35,7 +35,7 @@ function Set-ServersInMaintenanceMode
 .LINK
   http://machinecatalogmanager.readthedocs.io/en/latest/functions/Set-ServersInMaintenanceMode.md
 .LINK
-  https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/public/Set-ServersInMaintenanceMode.ps1
+  https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/Public/Set-ServersInMaintenanceMode.ps1
 #>
     [CmdletBinding(DefaultParameterSetName = "DefaultParameterSet", SupportsShouldProcess, ConfirmImpact = "Low", HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/Set-ServersInMaintenanceMode.md")]
     param (
