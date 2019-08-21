@@ -1,28 +1,18 @@
-# See http://www.appveyor.com/docs/appveyor-yml for many more options
-
-# Build worker image (VM template)
-image: Visual Studio 2017
-
-# clone directory
-clone_folder: C:\MyProjects\MachineCatalogManager
+version: 0.1.0.{build}
 
 environment:
-  NugetApiKey:
-    secure: SDpxSFw0XVd2euHu9IZuYbxz8fXaRf6drEVlDc0u5iGJmonpBbRkIXkeyW3CvyA3
-  access_token:
-    secure: LteZRu3lMw2hw+kzXHqihiuUuyYMBx1SrSI0fv00dsPH0JuGOdRM0f2JP0Tm7Ju9
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PowerShellEdition: PowerShellCore
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PowerShellEdition: WindowsPowerShell
 
-# Skip on updates to the readme.
-# We can force this by adding [skip ci] or [ci skip] anywhere in commit message 
 skip_commits:
-  message: /updated (readme|doc).*|update (readme|doc).*s/
+  message: /updated readme.*|update readme.*s/
+build: off
 
-# build cache to preserve files/folders between builds
-cache:
-  - _build-cache -> *.depend.psd1
-
-build: false
-
-#Kick off the CI/CD pipeline
+# Kick off the CI/CD pipeline
 test_script:
-  - ps: . .\build.ps1
+  - ps:   if ($env:PowerShellEdition -eq 'WindowsPowerShell') { . .\build.ps1 -Task Test }
+  - pwsh: if ($env:PowerShellEdition -eq 'PowerShellCore')    { . .\build.ps1 -Task Test }
+

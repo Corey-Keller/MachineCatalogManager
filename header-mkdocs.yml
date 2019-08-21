@@ -1,8 +1,0 @@
-site_name: MachineCatalogManager
-repo_url: https://github.com/Corey-Keller/MachineCatalogManager
-site_author: Corey Keller 
-edit_uri: edit/master/docs/
-theme: readthedocs
-copyright: "MachineCatalogManager is licensed under the <a href='https://github.com/Corey-Keller/MachineCatalogManager/raw/master/LICENSE'>AGPL license"
-pages:
-  - Home: index.md

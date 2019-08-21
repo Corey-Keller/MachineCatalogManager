@@ -1,13 +1,44 @@
-param ($Task = 'Default')
+[cmdletbinding(DefaultParameterSetName = 'Task')]
+param(
+    # Build task(s) to execute
+    [parameter(ParameterSetName = 'task', position = 0)]
+    [string[]]$Task = 'default',
 
-# Grab nuget bits, install modules, set build variables, start build.
-Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
+    # Bootstrap dependencies
+    [switch]$Bootstrap,
 
-Install-Module Psake, PSDeploy, BuildHelpers, platyPS, PSScriptAnalyzer -force
-Install-Module Pester -Force -SkipPublisherCheck
-Import-Module Psake, BuildHelpers, platyPS, PSScriptAnalyzer
+    # List available build tasks
+    [parameter(ParameterSetName = 'Help')]
+    [switch]$Help,
 
-Set-BuildEnvironment
+    # Optional properties to pass to psake
+    [hashtable]$Properties
+)
 
-Invoke-psake -buildFile .\psake.ps1 -taskList $Task -nologo
-exit ([int](-not $psake.build_success))
+$ErrorActionPreference = 'Stop'
+
+# Bootstrap dependencies
+if ($Bootstrap.IsPresent) {
+    Get-PackageProvider -Name Nuget -ForceBootstrap | Out-Null
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    if ((Test-Path -Path ./requirements.psd1)) {
+        if (-not (Get-Module -Name PSDepend -ListAvailable)) {
+            Install-Module -Name PSDepend -Repository PSGallery -Scope CurrentUser -Force
+        }
+        Import-Module -Name PSDepend -Verbose:$false
+        Invoke-PSDepend -Path './requirements.psd1' -Install -Import -Force -WarningAction SilentlyContinue
+    } else {
+        Write-Warning "No [requirements.psd1] found. Skipping build dependency installation."
+    }
+}
+
+# Execute psake task(s)
+$psakeFile = './psakeFile.ps1'
+if ($PSCmdlet.ParameterSetName -eq 'Help') {
+    Get-PSakeScriptTasks -buildFile $psakeFile |
+        Format-Table -Property Name, Description, Alias, DependsOn
+} else {
+    Set-BuildEnvironment -Force
+    Invoke-psake -buildFile $psakeFile -taskList $Task -nologo -properties $Properties
+    exit ([int](-not $psake.build_success))
+}

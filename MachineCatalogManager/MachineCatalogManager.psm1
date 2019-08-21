@@ -1,21 +1,13 @@
-[cmdletbinding()]
-param()
-Write-Verbose "This psm1 is replaced in the build output. This file is only used for debugging."
-Write-Verbose $PSScriptRoot
-
-Write-Verbose 'Import everything in sub folders'
-foreach ($folder in @('classes', 'private', 'public', 'includes', 'internal'))
-{
-    $root = Join-Path -Path $PSScriptRoot -ChildPath $folder
-    if (Test-Path -Path $root)
-    {
-        Write-Verbose "processing folder $root"
-        $files = Get-ChildItem -Path $root -Filter *.ps1 -Recurse
-
-        # dot source each file
-        $files | where-Object { $_.name -NotLike '*.Tests.ps1'} | 
-            ForEach-Object {Write-Verbose $_.basename; . $_.FullName}
+# Dot source public/private functions
+$public  = @(Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'public/*.ps1')  -Recurse -ErrorAction Stop)
+$private = @(Get-ChildItem -Path (Join-Path -Path $PSScriptRoot -ChildPath 'private/*.ps1') -Recurse -ErrorAction Stop)
+foreach ($import in @($public + $private)) {
+    try {
+        . $import.FullName
+    }
+    catch {
+        throw "Unable to dot source [$($import.FullName)]"
     }
 }
 
-Export-ModuleMember -function (Get-ChildItem -Path "$PSScriptRoot\public\*.ps1").basename
+Export-ModuleMember -Function $public.Basename
