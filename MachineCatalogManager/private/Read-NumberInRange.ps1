@@ -1,6 +1,6 @@
 function Read-NumberInRange
 {
-    <#
+  <#
   .SYNOPSIS
     Will get input from the user and ensure that it is an acceptable numeric value.
   .DESCRIPTION
@@ -33,8 +33,12 @@ function Read-NumberInRange
     Integer
   .NOTES
     General notes
+  .LINK
+    http://machinecatalogmanager.readthedocs.io/en/latest/functions/Read-NumberInRange.md
+  .LINK
+    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/private/Read-NumberInRange.ps1
   #>
-    [CmdletBinding(HelpURI = "https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs")
+    [CmdletBinding(HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/Read-NumberInRange.md")
     param (
         # Parameter help description
         [Parameter(ParameterSetName = "Range")]
@@ -100,7 +104,7 @@ function Read-NumberInRange
         }
         else
         {
-            Write-Output "An unknown error occured. Exiting"
+            Write-Output "An unknown error occurred. Exiting"
             exit 77
         }
         Read-NumberInRange @PSBoundParameters

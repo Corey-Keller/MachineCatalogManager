@@ -42,8 +42,13 @@ Function New-Popup
     Ignore = 5
     Yes    = 6
     No     = 7
+  .LINK
+    http://machinecatalogmanager.readthedocs.io/en/latest/functions/New-Popup.md
+  .LINK
+    https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/private/New-Popup.ps1
+
   #>
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None", HelpURI = "https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs")]
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = "None", HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/New-Popup.md")]
     Param (
         [Parameter(Position = 0, Mandatory = $True, HelpMessage = "Enter a message for the popup")]
         [ValidateNotNullorEmpty()]

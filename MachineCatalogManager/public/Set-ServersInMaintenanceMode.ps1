@@ -30,12 +30,14 @@ function Set-ServersInMaintenanceMode
   Will set all servers into Maintenance Mode without prompting the user to double check.
 .INPUTS
   None. You cannot pipe objects to Set-ServersInMaintenanceMode
-.LINK
-  https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs
 .OUTPUTS
   None
+.LINK
+  http://machinecatalogmanager.readthedocs.io/en/latest/functions/Set-ServersInMaintenanceMode.md
+.LINK
+  https://github.com/Corey-Keller/MachineCatalogManager/blob/master/MachineCatalogManager/public/Set-ServersInMaintenanceMode.ps1
 #>
-    [CmdletBinding(DefaultParameterSetName = "DefaultParameterSet", SupportsShouldProcess, ConfirmImpact = "Low", HelpURI = "https://github.com/Corey-Keller/MachineCatalogManager/tree/master/docs")]
+    [CmdletBinding(DefaultParameterSetName = "DefaultParameterSet", SupportsShouldProcess, ConfirmImpact = "Low", HelpURI = "http://machinecatalogmanager.readthedocs.io/en/latest/functions/Set-ServersInMaintenanceMode.md")]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [Alias("Catalog", "MC")]
